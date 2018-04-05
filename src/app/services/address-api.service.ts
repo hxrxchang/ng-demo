@@ -5,8 +5,7 @@ import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class AddressApiService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   fetchAddress(postCode: number) {
     const URL = `http://api.zipaddress.net/?zipcode=${postCode}`;

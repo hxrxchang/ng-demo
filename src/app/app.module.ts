@@ -12,20 +12,9 @@ import { AddressApiService } from './services/address-api.service';
 import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    TopMessageComponent,
-    SearchFormComponent,
-    SearchResultComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  declarations: [AppComponent, ToolbarComponent, TopMessageComponent, SearchFormComponent, SearchResultComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [AddressApiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
