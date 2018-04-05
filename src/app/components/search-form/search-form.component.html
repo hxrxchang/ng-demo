@@ -1,7 +1,8 @@
 <div class="search">
   <span>〒</span>
-  <input class="search__input" type="number" [(ngModel)]="postCode" />
+  <form class="search__input" type="number" [formGroup]="postCodeForm">
+    <input formControlName="postCode">
+  </form>
   <button class="search__button" (click)="onClickFetchAddress()">検索</button>
 </div>
-{{ addressData }}
-<!-- <app-search-result [data]="'hogehoge'"></app-search-result> -->
+<p *ngIf="postCodeForm.invalid && (postCodeForm.dirty || postCodeForm.touched)">正しい値を入力してください</p>

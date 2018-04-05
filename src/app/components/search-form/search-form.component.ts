@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AddressApiService } from '../../services/address-api.service';
 
@@ -8,16 +9,27 @@ import { AddressApiService } from '../../services/address-api.service';
   styleUrls: ['./search-form.component.css'],
 })
 export class SearchFormComponent implements OnInit {
-  postCode = 1600022;
-  addressData;
+  @Output() search = new EventEmitter<number>();
+  postCodeForm: FormGroup;
 
-  constructor(private addressApiService: AddressApiService) {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  get postCode() {
+    return this.postCodeForm.controls['postCode'];
+  }
 
-  onClickFetchAddress() {
-    this.addressApiService.fetchAddress(this.postCode).subscribe((res) => {
-      this.addressData = res.data.fullAddress;
+  ngOnInit() {
+    this.postCodeForm = this.fb.group({
+      // validate with post code.
+      postCode: ['', [Validators.required, Validators.pattern('^[0-9]{7}$')]],
     });
+  }
+
+  onClickFetchAddress(): void {
+    if (this.postCodeForm.invalid) {
+      return;
+    }
+
+    this.search.emit(this.postCode.value);
   }
 }
