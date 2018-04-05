@@ -1,4 +1,7 @@
 <div class="search">
-  <input class="search__input" type="number" placeholder="郵便番号">
+  <span>〒</span>
+  <input class="search__input" type="number" [(ngModel)]="postCode" />
   <button class="search__button" (click)="onClickFetchAddress()">検索</button>
 </div>
+{{ addressData }}
+<!-- <app-search-result [data]="'hogehoge'"></app-search-result> -->
