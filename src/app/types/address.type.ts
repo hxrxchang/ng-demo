@@ -1,5 +1,13 @@
+export interface AddressApiResponse {
+  code: number;
+  data: Address;
+  message?: string;
+}
+
 export interface Address {
-  address1: string;
-  address2: string;
-  address3: string;
+  pref: string;
+  address: string;
+  city: string;
+  town: string;
+  fullAddress: string;
 }
